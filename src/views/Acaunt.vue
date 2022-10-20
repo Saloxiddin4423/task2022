@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <i data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-trash text-danger fs-5"></i> 
-                <RouterLink :to="{path : '/updete', query:{id:date} }"> <i class=" fs-5 ms-3 text-info bi bi-pencil"></i></RouterLink>
+                <RouterLink :to="{path : '/updete', query:{id:id} }"> <i class=" fs-5 ms-3 text-info bi bi-pencil"></i></RouterLink>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@ let image = ref(0)
 
  console.log(route.query.id);
 data.forEach(elem => {
-    if (elem.date == route.query.id) {
+    if (elem.id == route.query.id) {
         name.value = elem.name
         department.value = elem.department
         position.value = elem.position
@@ -65,7 +65,7 @@ data.forEach(elem => {
 
 let res = ref(JSON.parse(localStorage.getItem("data")))
 const deleteItem = (id) => {
-    localStorage.setItem('data', JSON.stringify(res.value.filter((item) => item.date !== date.value)))
+    localStorage.setItem('data', JSON.stringify(res.value.filter((item) => item.id !== date.id)))
     res.value = JSON.parse(localStorage.getItem("data"))
 }
 

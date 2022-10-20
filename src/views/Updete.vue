@@ -1,7 +1,7 @@
 <template>
   <form class="  w-50 m-auto">
     <div class="mb-3  ">
-      <label for=" " :class="color1">Full name</label>
+      <label for=" " :class="color1">Full name </label>
       <input  @keyup="yoz" type="text" v-model="name" class="form-control" id=" ">
     </div>
     <div class="mb-3  ">
@@ -13,7 +13,7 @@
       </select>
     </div>
     <div class="mb-3">
-      <label for=" " :class="color3">Position</label>
+      <label for="" :class="color3">Position</label>
       <input  @keyup="yoz" type="text" v-model="position" class="form-control" id=" ">
     </div>
     <div class="mb-3">
@@ -50,12 +50,10 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
           <RouterLink to="/allEmployees">
-
           <button @click="updete" type="button" data-bs-dismiss="modal" class="btn btn-secondary text-light">
               Save changes
           </button>
         </RouterLink>
-
         </div>
       </div>
     </div>
@@ -71,7 +69,6 @@ let department = ref("")
 let position = ref("")
 let gender = ref("")
 let date = ref("")
-let id = 0;
 let color1 = ref("")
 let color2 = ref("")
 let color3 = ref("")
@@ -85,7 +82,6 @@ let res = JSON.parse(localStorage.getItem("data"))
 const getGender = (e) => {
   gender.value = e.target.value
   color5.value = "text-dark "
-
 }
 const validation = () => {
   if (position.value !== "" && name.value !== "" && department.value !== "" && gender.value !== "" && date.value !== "") {
@@ -114,20 +110,18 @@ const yoz  = ()=>{
   color5.value = "text-dark "
  }
 
-// for (let i = 0; i < res.length; i++) {
-//     if (res[i].name == route.query.id) {
-//       name = res[i].name
-//       department = res[i].department
-//       position = res[i].position
-//       gender = res[i].gender
-//       date = res[i].date
-    
-//     } else {
-//     }
-//   }
+for (let i = 0; i < res.length; i++) {
+    if (res[i].id == route.query.id) {
+      name.value= res[i].name
+      department.value = res[i].department
+      position.value = res[i].position
+      gender.value = res[i].gender
+      date.value = res[i].date
+    }  
+  }
 function  updete () {
   for (let i = 0; i < res.length; i++) {
-    if (res[i].date == route.query.id) {
+    if (res[i].id == route.query.id) {
       let person = {
         name: name.value,
         department: department.value,

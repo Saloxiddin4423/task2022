@@ -42,10 +42,10 @@
                             </div>
                         </div>
                     </div>
-                    <i data-bs-toggle="modal" @click="idUsers   (item.date)" data-bs-target="#exampleModal" class="bi bi-trash text-danger fs-5"></i>
-                    <RouterLink :to="{path : '/updete', query:{id:item.date} }"> <i
+                    <i data-bs-toggle="modal" @click="idUsers(item.id)" data-bs-target="#exampleModal" class="bi bi-trash text-danger fs-5"></i>
+                    <RouterLink :to="{path : '/updete', query:{id:item.id} }"> <i
                             class=" fs-5 ms-3 text-info bi bi-pencil"></i></RouterLink>
-                    <RouterLink :to="{path : '/acaunt', query:{id:item.date} }"> <i
+                    <RouterLink :to="{path : '/acaunt', query:{id:item.id} }"> <i
                             class="bi bi-person-circle ms-3 fs-5 text-success"></i></RouterLink>
                 </td>
             </tr>
@@ -58,7 +58,7 @@ import { RouterLink, RouterView } from 'vue-router'
 let id = ref()
 let res = ref(JSON.parse(localStorage.getItem("data")))
 const deleteItem = () => {
-    localStorage.setItem('data', JSON.stringify(res.value.filter((item) => item.date !== id.value)))
+    localStorage.setItem('data', JSON.stringify(res.value.filter((item) => item.id !== id.id)))
     res.value = JSON.parse(localStorage.getItem("data"))
 }
 

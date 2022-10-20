@@ -7,24 +7,24 @@
     <div class="mb-3  ">
       <label for="" :class="color2">Department</label>
       <select @click="yoz"  class="form-select" v-model="department">
-        <option value="IT">IT</option>
+        <option value="IT" >IT</option>
         <option value="Marketing">Marketing</option>
         <option value="Accounting">Accounting</option>
       </select>
     </div>
     <div class="mb-3">
-      <label for=" " :class="color3">Position</label>
+      <label for="" :class="color3">Position</label>
       <input  @keyup="yoz" type="text" v-model="position" class="form-control" id=" ">
     </div>
     <div class="mb-3">
       <div class="form-check">
-        <input class="form-check-input" v-on:input="getGender" value="male" type="radio" name="flexRadioDefault">
+        <input class="form-check-input" v-on:input="getGender" value="Male" type="radio" name="flexRadioDefault">
         <label :class="color5"   for="flexRadioDefault1">
           Male
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" v-on:input="getGender" value="Women" type="radio" name="flexRadioDefault">
+        <input class="form-check-input" v-on:input="getGender" value="Female" type="radio" name="flexRadioDefault">
         <label :class="color5"  for="flexRadioDefault2">
           Women
         </label>
@@ -52,7 +52,6 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-info" data-bs-dismiss="modal">Close</button>
           <RouterLink to="/allEmployees">
-
           <button @click="AddUser" type="button" data-bs-dismiss="modal" class="btn btn-secondary text-light">
               Save changes
           </button>
@@ -72,6 +71,7 @@ let position = ref("")
 let gender = ref("")
 let modal = ref("");
 let date = ref("");
+let id = ref("")
 let color1 = ref("")
 let color2 = ref("")
 let color3 = ref("")
@@ -122,6 +122,7 @@ function AddUser() {
       position: position.value,
       gender: gender.value,
       date: date.value,
+      id:data.length
     }
     data.push(person)
     localStorage.setItem('data', JSON.stringify(data))
@@ -133,6 +134,7 @@ function AddUser() {
       position: position.value,
       gender: gender.value,
       date: date.value,
+      id:data.length
     }
     data.push(person)
     localStorage.setItem('data', JSON.stringify(data))
