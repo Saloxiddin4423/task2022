@@ -36,13 +36,13 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
                                     <RouterLink to="/"> <button type="button" data-bs-dismiss="modal"
-                                            @click="deleteItem(item.date)" class="btn btn-danger">Yes</button>
+                                            @click="deleteItem()" class="btn btn-danger">Yes</button>
                                     </RouterLink>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <i data-bs-toggle="modal" data-bs-target="#exampleModal" class="bi bi-trash text-danger fs-5"></i>
+                    <i data-bs-toggle="modal" @click="idUsers   (item.date)" data-bs-target="#exampleModal" class="bi bi-trash text-danger fs-5"></i>
                     <RouterLink :to="{path : '/updete', query:{id:item.date} }"> <i
                             class=" fs-5 ms-3 text-info bi bi-pencil"></i></RouterLink>
                     <RouterLink :to="{path : '/acaunt', query:{id:item.date} }"> <i
@@ -55,11 +55,15 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
-
+let id = ref()
 let res = ref(JSON.parse(localStorage.getItem("data")))
-const deleteItem = (id) => {
-    localStorage.setItem('data', JSON.stringify(res.value.filter((item) => item.date !== id)))
+const deleteItem = () => {
+    localStorage.setItem('data', JSON.stringify(res.value.filter((item) => item.date !== id.value)))
     res.value = JSON.parse(localStorage.getItem("data"))
 }
 
+
+function idUsers(e) {
+    id.value = e
+}
 </script>
